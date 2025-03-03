@@ -387,9 +387,14 @@ def disable_colors():
 def get_api_server_url(_output_directory):
     '''Retrieves the API server's URL from the disk (useful when performing offline operations).'''
 
-    url = ""
-    with open(os.path.join(_output_directory, "api_server_url.txt"), "r", encoding="utf-8") as f:
-        url = f.read().strip()
+    url = "https://localhost:6443"
+    try:
+        with open(os.path.join(_output_directory, "api_server_url.txt"), "r", encoding="utf-8") as f:
+            url = f.read().strip()
+    except FileNotFoundError:
+        print()
+        print("{:s}: the api_server_url.txt file was not found; using {:s} as a placeholder.".format(yellow("WARNING"), url))
+        print()
 
     return url
 
@@ -400,7 +405,7 @@ def get_cluster_internal_dns_url(_output_directory):
     internal_dns_url_path = os.path.join(_output_directory, "internal_dns_url.txt")
     if not os.path.isfile(internal_dns_url_path):
         print()
-        print("WARNING: the cluster's internal DNS URL was not found in {:s}. Using the default of {:s} instead. If this doesn't work, manually examine the API server's certificate Subject Alternative Names and put one in {:s}.".format(internal_dns_url_path, DEFAULT_CLUSTER_INTERNAL_URL, internal_dns_url_path))
+        print("{:s}: the cluster's internal DNS URL was not found in {:s}. Using the default of {:s} instead. If this doesn't work, manually examine the API server's certificate Subject Alternative Names and put one in {:s}.".format(yellow("WARNING"), internal_dns_url_path, DEFAULT_CLUSTER_INTERNAL_URL, internal_dns_url_path))
         print()
         return DEFAULT_CLUSTER_INTERNAL_URL
 
